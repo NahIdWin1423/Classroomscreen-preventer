@@ -1,0 +1,13 @@
+(function() {
+    const originalOpen = window.open;
+    window.open = function() {
+        console.log('Attempt to open a new window blocked.');
+        return null; // Prevent new window from opening
+    };
+
+    const originalAlert = window.alert;
+    window.alert = function() {
+        console.log('Alert blocked.');
+        // Prevent alert from showing
+    };
+})();
