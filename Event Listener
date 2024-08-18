@@ -1,0 +1,16 @@
+function blockClassroomSpy() {
+    const classroomSpyDomain = "classroomspy.com";
+    const command = `iptables -A OUTPUT -p tcp -d ${classroomSpyDomain} -j DROP`;
+    
+    const exec = require('child_process').exec;
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error blocking ClassroomSpy: ${error.message}`);
+            return;
+        }
+        console.log(`ClassroomSpy network access blocked: ${stdout}`);
+    });
+}
+
+// Call the function
+blockClassroomSpy();
